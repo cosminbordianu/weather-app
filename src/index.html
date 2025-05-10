@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude: lat, longitude: long } = position.coords;
+        fetch(`/.netlify/functions/fetch-weather?lat=${lat}&lon=${long}`)
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+          });
+      });
+    </script>
+  </body>
+</html>
