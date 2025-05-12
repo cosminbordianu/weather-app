@@ -1,0 +1,420 @@
+body {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
+  background-color: var(--clr-bg);
+  min-height: calc(100vh - 6.25rem - 4rem);
+  color: var(--clr-text);
+  padding: 0 1rem;
+  width: 100%;
+  margin-top: 6.25rem;
+  margin-bottom: 4rem;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  src: url("/src/assets/fonts/ubuntu-regular.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 300;
+  src: url("/src/assets/fonts/ubuntu-light.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-light.woff") format("woff");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  src: url("/src/assets/fonts/ubuntu-bold.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-bold.woff") format("truetype");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--fw-bold);
+}
+
+h1 {
+  font-size: clamp(2rem, 1.8182rem + 0.7758vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 1.0227rem + 0.9697vw, 1.75rem);
+}
+
+:root {
+  --ff-primary: "Ubuntu", "Arial", sans-serif;
+  --fw-bold: 700;
+  --fw-regular: 400;
+  --fw-light: 300;
+  --clr-bg: #131214;
+  --clr-text: #eae6f2;
+  --clr-text-dark: #797979;
+  --clr-btn-bg: #b5a1e5;
+  --clr-card: #1d1c1f;
+  --clr-card2: #272727;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.4;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+    10. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  padding: 0;
+  list-style: none;
+}
+
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.icon {
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
+
+.header {
+  max-width: 75rem;
+  width: 100%;
+  margin: auto;
+  background-color: var(--clr-bg);
+  height: 6.25rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.header__logo {
+  width: max-content;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.header__logo-text {
+  display: none;
+}
+@media (min-width: 50em) {
+  .header__logo-text {
+    display: block;
+  }
+}
+
+.search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+}
+@media (min-width: 37.5em) {
+  .search {
+    align-items: center;
+  }
+}
+.search__view {
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  padding: 0.3rem;
+  transition: width 0.5s ease;
+  background-color: var(--clr-card);
+  border-radius: 3rem;
+}
+.search__view-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.875rem;
+}
+.search__view-field {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--clr-card);
+  border: none;
+  color: var(--clr-text);
+  outline: none;
+  border-radius: inherit;
+  opacity: 1;
+}
+@media (max-width: 37.499375em) {
+  .search__view:is(:hover, :focus-within) {
+    width: 100%;
+  }
+  .search__view:is(:hover, :focus-within) .search__view-field {
+    opacity: 1;
+  }
+  .search__view-field {
+    opacity: 0;
+  }
+}
+@media (min-width: 37.5em) {
+  .search__view {
+    max-width: 28.125rem;
+    width: 100%;
+  }
+}
+.search .search__list {
+  border-top: 1px solid var(--clr-text-dark);
+  box-shadow: 0 0px 3px var(--clr-text-dark);
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  right: 0;
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+  z-index: 100;
+}
+.search .search__list-item {
+  text-align: left;
+  background-color: var(--clr-card);
+  color: var(--clr-text);
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.search .search__list-item:hover {
+  background-color: var(--clr-text-dark);
+}
+.search .search__list-title {
+  font-weight: bold;
+}
+.search .search__list-desc {
+  color: rgb(105, 105, 105);
+}
+
+.button-container button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4rem;
+  border: none;
+  color: var(--clr-bg);
+  gap: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: width 0.5s ease;
+  padding-right: 0.8rem;
+  background-color: var(--clr-btn-bg);
+}
+@media (max-width: 37.499375em) {
+  .button-container button:is(:hover, :focus-visible) {
+    width: max-content;
+  }
+  .button-container button:is(:hover, :focus-visible) .button-container-text {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media (min-width: 37.5em) {
+  .button-container button {
+    width: max-content;
+  }
+}
+.button-container-text {
+  visibility: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.7s;
+}
+@media (min-width: 37.5em) {
+  .button-container-text {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.button-container-icon {
+  flex-shrink: 0;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.gray-text {
+  color: var(--clr-text-dark);
+}
+
+main {
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  width: 100%;
+  gap: 2rem;
+  background-color: var(--clr-card);
+  padding: 1.2rem;
+  border-radius: 1rem;
+}
+@media (min-width: 37.5em) {
+  .weather {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: minmax(15.625rem, 18.75rem) minmax(15.625rem, 18.75rem);
+    max-width: max-content;
+    width: 100%;
+  }
+}
+.weather.intro {
+  flex-direction: row;
+}
+.weather .intro-message {
+  width: 200%;
+  font-size: 1.3rem;
+  font-weight: var(--fw-bold);
+}
+.weather__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.weather__card hr {
+  border: 1px solid var(--clr-text-dark);
+}
+.weather__card-stats {
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.weather__card-highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 1.4px lightgray;
+}
+
+.forecast {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.forecast__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--clr-card);
+  box-shadow: 0 0 1.5px var(--clr-text-dark);
+  padding: 1rem;
+  border-radius: 0.7rem;
+}
+.forecast__card img {
+  width: 3.75rem;
+}
+@media (max-width: 37.499375em) {
+  .forecast {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

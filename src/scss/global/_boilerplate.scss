@@ -1,0 +1,13 @@
+@use "../util/functions" as *;
+
+body {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
+  background-color: var(--clr-bg);
+  min-height: calc(100vh - rem(100) - 4rem);
+  color: var(--clr-text);
+  padding: 0 1rem;
+  width: 100%;
+  margin-top: rem(100);
+  margin-bottom: 4rem;
+}
