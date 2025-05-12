@@ -10,21 +10,6 @@ body {
   margin-bottom: 4rem;
 }
 
-@font-face {
-  font-family: "Ubuntu";
-  font-weight: 400;
-  src: url("/src/assets/fonts/ubuntu-regular.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-regular.woff") format("woff");
-}
-@font-face {
-  font-family: "Ubuntu";
-  font-weight: 300;
-  src: url("/src/assets/fonts/ubuntu-light.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-light.woff") format("woff");
-}
-@font-face {
-  font-family: "Ubuntu";
-  font-weight: 700;
-  src: url("/src/assets/fonts/ubuntu-bold.woff2") format("woff2"), url("/src/assets/fonts/ubuntu-bold.woff") format("truetype");
-}
 h1,
 h2,
 h3,
@@ -355,7 +340,10 @@ main {
   .weather {
     padding: 2rem;
     display: grid;
-    grid-template-columns: minmax(15.625rem, 18.75rem) minmax(15.625rem, 18.75rem);
+    grid-template-columns: minmax(15.625rem, 18.75rem) minmax(
+        15.625rem,
+        18.75rem
+      );
     max-width: max-content;
     width: 100%;
   }

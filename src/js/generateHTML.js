@@ -2,9 +2,6 @@ export default class generateHTML {
     constructor(currentWeather, forecastWeather) {
         this.currentWeather = currentWeather;
         this.forecastWeather = forecastWeather;
-
-        console.log("currentWeather: ", currentWeather);
-        console.log("forecastWeather: ", forecastWeather);
         this.generateHTMLForCurrentWeather(currentWeather);
         this.generateHTMLForForecastWeather(forecastWeather.list);
     }
@@ -28,7 +25,7 @@ export default class generateHTML {
           <hr />
           <div class="flex">
             <img
-              src="./assets/images/location-white.svg"
+              src="./assets/images/calendar.svg"
               alt="location icon"
               class="small-icon"
             />

@@ -33,6 +33,22 @@ export default class searchLogic {
         }, 400);
       }
     });
+
+    this.currentLocationBtn.addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((posiiton) => {
+          const lat = posiiton.coords.latitude;
+          const lon = posiiton.coords.longitude;
+          const selectedCity = {lat, lon}
+          if (this.onCitySelected) {
+            this.onCitySelected(selectedCity);
+          }
+
+        })
+      } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+    })
   }
 
   generateHtmlList(city) {
