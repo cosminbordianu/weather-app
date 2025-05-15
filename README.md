@@ -20,11 +20,7 @@
 
 ## How to run it
 
-- create an .env file in the root of the project
-
-```js
-API_KEY = `your-api-key`;
-```
+- create an .env file in the root of the project (API_KEY='your-api-key')
 
 - npm install (installs from package.json file the following: axios, dotenv, netlify-cli, sass)
 
